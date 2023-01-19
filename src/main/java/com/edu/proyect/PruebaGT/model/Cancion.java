@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-@Table(name ="clientes")
+@Table(name ="canciones")
 public class Cancion implements Serializable {
 
     @Id
