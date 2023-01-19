@@ -24,8 +24,9 @@ public class ListaReproduccion implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "listaReproduccion")
-    private List<Cancion> cancion;
 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cancion", referencedColumnName = "id_cancion")
+    private Cancion cancion;
 }

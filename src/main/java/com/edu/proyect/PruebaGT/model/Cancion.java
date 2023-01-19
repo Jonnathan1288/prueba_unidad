@@ -1,16 +1,18 @@
 package com.edu.proyect.PruebaGT.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
 @Entity
-@Table(name ="canciones")
+@Table(name ="clientes")
 public class Cancion implements Serializable {
 
     @Id
@@ -30,8 +32,8 @@ public class Cancion implements Serializable {
     @Column(name = "year")
     private Date year;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_reproduccion", referencedColumnName = "id_reproduccion")
-    private ListaReproduccion listaReproduccion;
+    @JsonIgnore
+    @OneToMany(mappedBy = "cancion")
+    private List<ListaReproduccion> reproduccionList;
 
 }
